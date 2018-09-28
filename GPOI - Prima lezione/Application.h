@@ -7,6 +7,7 @@
 #include <string>
 #include <fstream>
 //#include <cstdlib> //may be usefull on certain compilers
+void info();
 
 class Application
 {
@@ -33,7 +34,7 @@ class Application
 //PUBLIC STUFF
 public:
 	void avviati();
-	Application();
+	Application(std::string path = "data.txt");
 private:
 
 	struct value

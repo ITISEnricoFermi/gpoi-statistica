@@ -18,7 +18,17 @@
 		5) INDIETRO
 
 	*/
-
+//print info about the program usage
+void info()
+{
+	std::cout << "pass the path to file containing data as a parameter!" << std::endl
+		<< "The file should be structured as follows separated by a comma" << std::endl
+		<< " ------------------------------------------" << std::endl
+		<< "|\tNUMBER : WEIGHT * FREQUENCY ,\t   |" << std::endl
+		<< " ------------------------------------------" << std::endl
+		<< "example( 104.2:100:4, ... )" << std::endl
+		<< "Number: 104.2\tweight: 100%\tfrequency: 4 times" << std::endl;
+}
 //custom value constructor
 Application::value::value(long double number, int weight, int frequency)
 	:
@@ -28,10 +38,10 @@ Application::value::value(long double number, int weight, int frequency)
 {}
 
 //application constructor
-Application::Application()
+Application::Application(std::string path)
 {
 	//directory del file testuale contenenti i valori da caricare
-	std::string path = "data.txt";
+	//std::string path = "data.txt";
 
 	//caricamento del vettore con i dati presi dal file testuale
 	loadFromFile(path);
@@ -267,6 +277,7 @@ void Application::loadFromFile(std::string& path)
 {
 	std::ifstream input(path);
 	if (!input.is_open()) {
+		std::cout << path << std::endl;
 		std::cout << "Si e' verificato un errore durante l'apertura del file!\nControlla che il percorso sia corretto!" << std::endl;
 		system("pause");
 		exit(EXIT_FAILURE);
