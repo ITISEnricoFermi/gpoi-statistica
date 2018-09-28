@@ -26,7 +26,7 @@ void info()
 		<< " ------------------------------------------" << std::endl
 		<< "|\tNUMBER : WEIGHT * FREQUENCY ,\t   |" << std::endl
 		<< " ------------------------------------------" << std::endl
-		<< "example( 104.2:100:4, ... )" << std::endl
+		<< "example( 104.2:100*4, ... )" << std::endl
 		<< "Number: 104.2\tweight: 100%\tfrequency: 4 times" << std::endl << std::endl;
 }
 //custom value constructor
@@ -279,7 +279,6 @@ void Application::loadFromFile(std::string& path)
 	if (!input.is_open()) {
 		std::cout << path << std::endl;
 		std::cout << "Si e' verificato un errore durante l'apertura del file!\nControlla che il percorso sia corretto!" << std::endl;
-		system("pause");
 		exit(EXIT_FAILURE);
 		return;
 	}
