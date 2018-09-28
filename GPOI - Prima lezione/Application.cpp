@@ -106,7 +106,7 @@ int Application::sub_menu()
 
 	int scelta = 0;
 	std::cin >> scelta;
-
+	
 	return scelta;
 }
 
