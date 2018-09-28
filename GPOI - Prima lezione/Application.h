@@ -6,8 +6,7 @@
 #include <algorithm>
 #include <string>
 #include <fstream>
-//#include <streambuf>
-//#include <sstream>
+//#include <cstdlib> //may be usefull on certain compilers
 
 class Application
 {
@@ -30,6 +29,8 @@ class Application
 		5) INDIETRO
 
 	*/
+
+//PUBLIC STUFF
 public:
 	void avviati();
 	Application();
@@ -47,13 +48,11 @@ private:
 	//FUNCTIONS
 	int menu();
 	int sub_menu();
-	void fill();
 	void mediaAritmetica();
 	void mediaArmonica();
 	void mediaAritmeticaPonderata();
 	void mediaGeometrica();
 	void varianza();
-	void reset();
 	void print();
 	void riepilogo();
 	void loadFromFile(std::string& path);
@@ -68,8 +67,8 @@ private:
 	long double m_mediaAritmeticaPonderata = 0;
 	long double m_mediaArmonica = 0;
 	long double m_mediaGeometrica = 0;
+	long double m_varianzaQ = 0;
 	long double m_varianza = 0;
-
 	long int n = 0;
 
 };

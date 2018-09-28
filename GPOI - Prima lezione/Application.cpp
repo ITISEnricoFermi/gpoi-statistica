@@ -19,17 +19,36 @@
 
 	*/
 
+//custom value constructor
+Application::value::value(long double number, int weight, int frequency)
+	:
+	number(number),
+	weight(weight),
+	frequency(frequency)
+{}
+
+//application constructor
+Application::Application()
+{
+	//directory del file testuale contenenti i valori da caricare
+	std::string path = "data.txt";
+
+	//caricamento del vettore con i dati presi dal file testuale
+	loadFromFile(path);
+
+	// numero totale elementi
+	for (const value& val : vec) n += val.frequency;
+}
+
+//run the application
 void Application::avviati() 
 {
 	while (true) {
 		switch (menu()) {
 		case 1:
-			fill();
-			break;
-		case 2:
 			print();
 			break;
-		case 3:
+		case 2:
 			switch (sub_menu())
 			{
 			case 1:
@@ -48,10 +67,10 @@ void Application::avviati()
 				break;
 			}
 			break;
-		case 4:
+		case 3:
 			varianza();
 			break;
-		case 5:
+		case 4:
 			mediaAritmetica();
 			mediaAritmeticaPonderata();
 			mediaArmonica();
@@ -59,10 +78,10 @@ void Application::avviati()
 			varianza();
 			riepilogo();
 			break;
-		case 6:
+		case 5:
 			riepilogo();
 			break;
-		case 7:
+		case 6:
 			return;
 		default:
 			break;
@@ -70,31 +89,17 @@ void Application::avviati()
 		system("pause");
 	}
 }
-
-Application::Application()
-{	
-	//directory del file testuale contenenti i valori da caricare
-	std::string path = "data.txt";
-
-	//caricamento del vettore con i dati presi dal file testuale
-	loadFromFile(path);	
-
-	// numero totale elementi
-	for (const value& val : vec) n += val.frequency; 
-}
-
 //Display the menu
 int Application::menu()
 {
 	system("cls");
 	std::cout << "- MENU -" << std::endl;
-	std::cout << "1) CARICA DATI" << std::endl;
-	std::cout << "2) STAMPA DATI" << std::endl;
-	std::cout << "3) CALCOLA MEDIA" << std::endl;
-	std::cout << "4) CALCOLA VARIANZA" << std::endl;
-	std::cout << "5) CALCOLA TUTTO" << std::endl;
-	std::cout << "6) RIEPILOGO" << std::endl;
-	std::cout << "7) ESCI" << std::endl;
+	std::cout << "1) STAMPA DATI" << std::endl;
+	std::cout << "2) CALCOLA MEDIA" << std::endl;
+	std::cout << "3) CALCOLA VARIANZA" << std::endl;
+	std::cout << "4) CALCOLA TUTTO" << std::endl;
+	std::cout << "5) RIEPILOGO" << std::endl;
+	std::cout << "6) ESCI" << std::endl;
 
 
 	int scelta = 0;
@@ -103,7 +108,6 @@ int Application::menu()
 	return scelta;
 
 }
-
 //Display the sub menu
 int Application::sub_menu()
 {
@@ -121,26 +125,7 @@ int Application::sub_menu()
 	
 	return scelta;
 }
-
-//fill the vector
-void Application::fill() 
-{
-	reset();
-	system("cls");
-	int size = 0;
-	std::cout << "numeri da inserire: ";
-	std::cin >> size;
-	std::cout << std::endl;
-	float temp = 0;
-	for (int i = 0; i < size; i++) {
-		printf("\n%i) Inserisci un numero: ", i + 1);
-		std::cin >> temp;
-		vec.push_back(temp);
-	}
-	//std::sort(vec.begin(), vec.end(), [](int a, int b) {return a < b; });
-}
-
-
+//calculate arithmetical average
 void Application::mediaAritmetica() 
 {
 	system("cls");
@@ -158,7 +143,7 @@ void Application::mediaAritmetica()
 
 	printf("Media Aritmetica: %.3f\n", m_mediaAritmetica);
 }
-
+//calculate armonical average
 void Application::mediaArmonica() 
 {
 	system("cls");
@@ -178,6 +163,7 @@ void Application::mediaArmonica()
 
 	printf("Media Armonica: %.3f\n", m_mediaArmonica);
 }
+//calculate weighted arithmetical average
 void Application::mediaAritmeticaPonderata()
 {
 	system("cls");
@@ -208,6 +194,7 @@ void Application::mediaAritmeticaPonderata()
 
 	printf("Media Aritmetica Ponderata: %.3f\n", m_mediaAritmeticaPonderata);
 }
+//calculate geometrical average
 void Application::mediaGeometrica()
 {
 	system("cls");
@@ -229,6 +216,7 @@ void Application::mediaGeometrica()
 
 	printf("Media Geometrica: %.3f\n", m_mediaGeometrica);
 }
+//calculate variance
 void Application::varianza() 
 {
 	system("cls");
@@ -236,26 +224,22 @@ void Application::varianza()
 	if(!m_mediaAritmetica)	mediaAritmetica();
 
 	long double s2 = 0;
-
+	size_t k = vec.size();
+	for (size_t i = 0; i < k; i++)
+	{
+		long double xi = vec.at(i).number;
+		int ni = vec.at(i).frequency;
+		s2 = ni * pow(xi - m_mediaAritmetica, 2);
+	}
+	m_varianzaQ = s2;
 	//for (int i = 0; i < n; i++) s2 += powl((vec.at(i).number - m_mediaAritmetica), 2);
 	//s2 = s2 / ((long double)n - 1);
 	//m_varianza = powl(s2, 1 / (long double)2);
-	m_varianza = 0; 
+	m_varianza = sqrtl(m_varianzaQ); 
 	
-	printf("Varianza: %.3f\n", m_varianza);
+	printf("Varianza^(2): %.3f\nVarianza: %.3f\n", m_varianzaQ, m_varianza);
 }
-
-void Application::reset()
-{
-	system("cls");
-	vec.erase(vec.begin(), vec.end());
-	m_mediaAritmetica = 0;
-	m_mediaAritmeticaPonderata = 0;
-	m_mediaArmonica = 0;
-	m_mediaGeometrica = 0;
-	m_varianza = 0;
-}
-
+//print the content of the vector
 void Application::print()
 {
 	system("cls");
@@ -265,7 +249,7 @@ void Application::print()
 		printf("%.2f\t%i\t%i\n", val.number, val.weight, val.frequency);
 	}
 }
-
+//print the current status of all the calculations
 void Application::riepilogo()
 {
 	system("cls");
@@ -275,21 +259,19 @@ void Application::riepilogo()
 	printf("Media Aritmetica Ponderata: %.2f\n", m_mediaAritmeticaPonderata);
 	printf("Media Armonica: %.2f\n", m_mediaArmonica);
 	printf("Media Geometrica: %.2f\n", m_mediaGeometrica);
+	printf("Varianza^(2): %.2f\n", m_varianzaQ);
 	printf("Varianza: %.2f\n", m_varianza);
 }
-
-Application::value::value(long double number, int weight, int frequency)
-	:
-	number(number),
-	weight(weight),
-	frequency(frequency)
-{}
-
+//load file to get data from
 void Application::loadFromFile(std::string& path)
 {
-	std::cout << "Initializing reading sequence" << std::endl;
 	std::ifstream input(path);
-	
+	if (!input.is_open()) {
+		std::cout << "Si e' verificato un errore durante l'apertura del file!\nControlla che il percorso sia corretto!" << std::endl;
+		system("pause");
+		exit(EXIT_FAILURE);
+		return;
+	}
 	std::string line;
 	while (std::getline(input, line, ','))
 	{
@@ -301,9 +283,8 @@ void Application::loadFromFile(std::string& path)
 	input.close();
 
 	std::sort(vec.begin(), vec.end(), [](const value& a, const value& b) {return a.number < b.number; });
-	system("pause");
 }
-
+//function for parsing data from file
 void Application::parse(std::string& line)
 {
 	std::string number, weight, frequency;
@@ -321,7 +302,7 @@ void Application::parse(std::string& line)
 
 	addToVec(number, weight, frequency);
 }
-
+//extract the number followed by a specific delimiter
 std::string Application::trimByDelim(const char& delim, std::string& line) 
 {
 	size_t start = line.find(delim);
@@ -338,7 +319,7 @@ std::string Application::trimByDelim(const char& delim, std::string& line)
 	return line.substr(start + 1, len);
 	
 }
-
+//searches for 'number' inside the string
 std::string Application::getNumberfromString(std::string& line)
 {
 	int start = 0, len = 1;
@@ -355,7 +336,7 @@ std::string Application::getNumberfromString(std::string& line)
 
 	return line.substr(start, len);
 }
-
+//Converts from string and add the elements to the vector
 void Application::addToVec(std::string& number, std::string& weight, std::string& frequency)
 {
 	long double n = std::stold(number);
