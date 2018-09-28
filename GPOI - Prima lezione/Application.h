@@ -4,6 +4,10 @@
 #include <cstdio>
 #include <cmath>
 #include <algorithm>
+#include <string>
+#include <fstream>
+//#include <streambuf>
+//#include <sstream>
 
 class Application
 {
@@ -28,7 +32,18 @@ class Application
 	*/
 public:
 	void avviati();
+	Application();
 private:
+
+	struct value
+	{
+		long double number;
+		unsigned int weight = 100;
+		unsigned int frequency = 1;
+
+		value(long double number, int weight = 100, int frequency = 1);
+	};
+
 	//FUNCTIONS
 	int menu();
 	int sub_menu();
@@ -41,13 +56,20 @@ private:
 	void reset();
 	void print();
 	void riepilogo();
+	void loadFromFile(std::string& path);
+	void parse(std::string& line);
+	void addToVec(std::string& number, std::string& weight, std::string& frequency);
+	std::string getNumberfromString(std::string& line);
+	std::string trimByDelim(const char& delim, std::string& line);
 
 	//VARIABLES
-	std::vector<float> vec;
-	float m_mediaAritmetica = 0;
-	float m_mediaAritmeticaPonderata = 0;
-	float m_mediaArmonica = 0;
-	float m_mediaGeometrica = 0;
-	float m_varianza = 0;
+	std::vector<value> vec;
+	long double m_mediaAritmetica = 0;
+	long double m_mediaAritmeticaPonderata = 0;
+	long double m_mediaArmonica = 0;
+	long double m_mediaGeometrica = 0;
+	long double m_varianza = 0;
+
+	long int n = 0;
 
 };
