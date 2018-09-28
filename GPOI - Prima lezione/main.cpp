@@ -4,6 +4,7 @@ int main(int argc, char** argv)
 {
 	if (argc == 1) {
 		info();
+		system("pause");
 		exit(EXIT_FAILURE);
 	}
 

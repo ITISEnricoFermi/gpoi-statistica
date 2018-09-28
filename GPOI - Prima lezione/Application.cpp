@@ -21,13 +21,13 @@
 //print info about the program usage
 void info()
 {
-	std::cout << "pass the path to file containing data as a parameter!" << std::endl
+	std::cout << std::endl << "pass the path to file containing data as a parameter!" << std::endl << std::endl
 		<< "The file should be structured as follows separated by a comma" << std::endl
 		<< " ------------------------------------------" << std::endl
 		<< "|\tNUMBER : WEIGHT * FREQUENCY ,\t   |" << std::endl
 		<< " ------------------------------------------" << std::endl
 		<< "example( 104.2:100:4, ... )" << std::endl
-		<< "Number: 104.2\tweight: 100%\tfrequency: 4 times" << std::endl;
+		<< "Number: 104.2\tweight: 100%\tfrequency: 4 times" << std::endl << std::endl;
 }
 //custom value constructor
 Application::value::value(long double number, int weight, int frequency)
@@ -59,8 +59,7 @@ void Application::avviati()
 			print();
 			break;
 		case 2:
-			switch (sub_menu())
-			{
+			switch (sub_menu()){
 			case 1:
 				mediaAritmetica();
 				break;
@@ -74,6 +73,7 @@ void Application::avviati()
 				mediaGeometrica();
 				break;
 			default:
+				continue;
 				break;
 			}
 			break;
