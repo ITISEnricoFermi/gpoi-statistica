@@ -1,23 +1,5 @@
 #include "Application.h"
 
-/*
-	-MENU-
-	1) CARICA DATI
-	2) CALCOLA MEDIA
-	3) CALCOLA VARIANZA
-	4) ESCI
-	*/
-
-	/*
-	-SUB MENU-
-	~ CALCOLA MEDIA
-		1) MEDIA ARITMETICA
-		2) MEDIA ARMONICA
-		3) MEDIA ARITMETICA PONDERATA
-		4) MEDIA GEOMETRICA
-		5) INDIETRO
-
-	*/
 //print info about the program usage
 void info()
 {
@@ -36,7 +18,6 @@ Application::value::value(long double number, int weight, int frequency)
 	weight(weight),
 	frequency(frequency)
 {}
-
 //application constructor
 Application::Application(std::string path)
 {
@@ -49,7 +30,6 @@ Application::Application(std::string path)
 	// numero totale elementi
 	for (const value& val : vec) n += val.frequency;
 }
-
 //run the application
 void Application::avviati() 
 {
@@ -241,10 +221,7 @@ void Application::varianza()
 		int ni = vec.at(i).frequency;
 		s2 = ni * pow(xi - m_mediaAritmetica, 2);
 	}
-	m_varianzaQ = s2;
-	//for (int i = 0; i < n; i++) s2 += powl((vec.at(i).number - m_mediaAritmetica), 2);
-	//s2 = s2 / ((long double)n - 1);
-	//m_varianza = powl(s2, 1 / (long double)2);
+	m_varianzaQ = s2 / k;
 	m_varianza = sqrtl(m_varianzaQ); 
 	
 	printf("Varianza^(2): %.3f\nVarianza: %.3f\n", m_varianzaQ, m_varianza);
@@ -343,7 +320,6 @@ std::string Application::getNumberfromString(std::string& line)
 		const char& c = line.at(i);
 		if ( c == ':' || c == '*')	break;
 	}
-
 	return line.substr(start, len);
 }
 //Converts from string and add the elements to the vector

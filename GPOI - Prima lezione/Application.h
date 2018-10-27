@@ -6,31 +6,11 @@
 #include <algorithm>
 #include <string>
 #include <fstream>
-//#include <cstdlib> //may be usefull on certain compilers
+
 void info();
 
 class Application
 {
-	/* run this program using the console pauser or add your own getch, system("pause") or input loop */
-	/*
-	-MENU-
-	1) CARICA DATI
-	2) CALCOLA MEDIA
-	3) CALCOLA VARIANZA
-	4) ESCI
-	*/
-
-	/*
-	-SUB MENU-
-	~ CALCOLA MEDIA
-		1) MEDIA ARITMETICA
-		2) MEDIA ARMONICA
-		3) MEDIA ARITMETICA PONDERATA
-		4) MEDIA GEOMETRICA
-		5) INDIETRO
-
-	*/
-
 //PUBLIC STUFF
 public:
 	void avviati();
