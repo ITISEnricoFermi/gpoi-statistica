@@ -25,3 +25,30 @@
 
 #### Metodi
 
+```C++
+	void riepilogo();
+	void loadFromFile(std::string& path);
+	void parse(std::string& line);
+	void addToVec(std::string& number, std::string& weight, std::string& frequency);
+	std::string getNumberfromString(std::string& line);
+	std::string trimByDelim(const char& delim, std::string& line);
+```
+
+  
+  
+|Tipo          |Nome                         |Attributi         |Descrizione                            |
+|--------------|-----------------------------|------------------|---------------------------------------|
+|int           |menu                         |//                |Stampa il menù                         |
+|int           |sub_menu                     |//                |Stampa il sotto-menù                   |
+|void          |mediaAritmetica              |//                |Calcola la media aritmetica            |
+|void          |mediaArmonica                |//                |Calcola la media armonica              |
+|void          |mediaAritmeticaPonderata     |//                |Calcola la media aritmetica ponderata  |
+|void          |mediaGeometrica              |//                |Calcola la media geometrica            |
+|void          |varianza                     |//                |Calcola la varianza                    |
+|void          |print                        |//                |Stampa il contenuto del vettore *vec*  |
+|   |   |   |   |
+|   |   |   |   |
+|   |   |   |   |
+|   |   |   |   |
+|   |   |   |   |
+|   |   |   |   |
