@@ -71,10 +71,124 @@ std::string trimByDelim(const char& delim, std::string& line);
 |string   |trimByDelim   		     |char& delim, string& line   |Esegue lo split della stringa di dati letta   |
 
 #### Media Artimetica
+
+```C++
+void Application::mediaAritmetica() {
+  system("cls");
+  if (m_mediaAritmetica) return;
+  long double s = 0;
+  size_t k = vec.size();
+  for (int i = 0; i < k; i++) {
+
+    long double xi = vec.at(i).number;
+    int ni = vec.at(i).frequency;
+    s += (xi * ni) / n;
+  }
+
+  m_mediaAritmetica = s;
+
+  printf("Media Aritmetica: %.3f\n", m_mediaAritmetica);
+}
+```
+
 #### Media Aritmetica Ponderata
+
+```C++
+void Application::mediaAritmeticaPonderata() {
+  system("cls");
+  if (m_mediaAritmeticaPonderata) return;
+
+  long double s = 0;
+  size_t k = vec.size();
+  long long int pesoTot = 0;
+  long double numTot = 0;
+  for (int i = 0; i < k; i++) {
+
+    int wi = vec.at(i).weight;
+    int ni = vec.at(i).frequency;
+    pesoTot += wi * ni;
+  }
+
+  for (int i = 0; i < k; i++) {
+
+    long double xi = vec.at(i).number;
+    int ni = vec.at(i).frequency;
+    int wi = vec.at(i).weight;
+    numTot += wi * ni * xi;
+  }
+
+  m_mediaAritmeticaPonderata = numTot / pesoTot;
+
+  printf("Media Aritmetica Ponderata: %.3f\n", m_mediaAritmeticaPonderata);
+}
+```
+
 #### Media Armonica
+
+```C++
+void Application::mediaArmonica() {
+  system("cls");
+  if (m_mediaArmonica) return;
+
+  long double s = 0;
+  size_t k = vec.size();
+  for (int i = 0; i < k; i++) {
+
+    long double xi = vec.at(i).number;
+    int ni = vec.at(i).frequency;
+    s += ni / xi;
+  }
+
+  m_mediaArmonica = n / s;
+
+  printf("Media Armonica: %.3f\n", m_mediaArmonica);
+}
+```
+
 #### Media Geometrica
+
+```C++
+void Application::mediaGeometrica() {
+  system("cls");
+  if (m_mediaGeometrica) return;
+  if (vec.size() == 0) return;
+
+  size_t k = vec.size();
+  long double m = powl(vec.at(0).number, vec.at(0).frequency);
+  for (int i = 0; i < k - 1; i++) {
+    long double xi = vec.at(i + 1).number;
+    int ni = vec.at(i + 1).frequency;
+
+    m *= powl(xi, ni);
+  }
+
+  m_mediaGeometrica = powl(m, 1 / (long double) n);
+
+  printf("Media Geometrica: %.3f\n", m_mediaGeometrica);
+}
+```
+
 #### Varianza
+
+```C++
+void Application::varianza() {
+  system("cls");
+  if (m_varianza) return;
+  if (!m_mediaAritmetica) mediaAritmetica();
+
+  long double s2 = 0;
+  size_t k = vec.size();
+  for (size_t i = 0; i < k; i++) {
+    long double xi = vec.at(i).number;
+    int ni = vec.at(i).frequency;
+    s2 = ni * pow(xi - m_mediaAritmetica, 2);
+  }
+  m_varianzaQ = s2 / k;
+  m_varianza = sqrtl(m_varianzaQ);
+
+  printf("Varianza^(2): %.3f\nVarianza: %.3f\n", m_varianzaQ, m_varianza);
+}
+```
 
 ## Authors
 
