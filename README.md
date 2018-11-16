@@ -8,19 +8,19 @@
 
 # Tabella delle variabili
 
-### Classe Application
+## Classe Application
 
-#### Variabili
+### Variabili
 
 ```C++
-	std::vector<value> vec;
-	long double m_mediaAritmetica = 0;
-	long double m_mediaAritmeticaPonderata = 0;
-	long double m_mediaArmonica = 0;
-	long double m_mediaGeometrica = 0;
-	long double m_varianzaQ = 0;
-	long double m_varianza = 0;
-	long int n = 0;
+std::vector<value> vec;
+long double m_mediaAritmetica = 0;
+long double m_mediaAritmeticaPonderata = 0;
+long double m_mediaArmonica = 0;
+long double m_mediaGeometrica = 0;
+long double m_varianzaQ = 0;
+long double m_varianza = 0;
+long int n = 0;
 ```
 
 |Tipo          |Nome                         |Valore iniziale   |Descrizione                  |
@@ -34,23 +34,23 @@
 |long double   |m_varianza                   |0                 |Varianza                     |
 |long int      |n                            |0                 |Totale delle frequenze       |
 
-#### Metodi
+### Metodi
 
 ```C++
-	int menu();
-	int sub_menu();
-	void mediaAritmetica();
-	void mediaArmonica();
-	void mediaAritmeticaPonderata();
-	void mediaGeometrica();
-	void varianza();
-	void print();
-	void riepilogo();
-	void loadFromFile(std::string& path);
-	void parse(std::string& line);
-	void addToVec(std::string& number, std::string& weight, std::string& frequency);
-	std::string getNumberfromString(std::string& line);
-	std::string trimByDelim(const char& delim, std::string& line);
+int menu();
+int sub_menu();
+void mediaAritmetica();
+void mediaArmonica();
+void mediaAritmeticaPonderata();
+void mediaGeometrica();
+void varianza();
+void print();
+void riepilogo();
+void loadFromFile(std::string& path);
+void parse(std::string& line);
+void addToVec(std::string& number, std::string& weight, std::string& frequency);
+std::string getNumberfromString(std::string& line);
+std::string trimByDelim(const char& delim, std::string& line);
 ```
   
 |Tipo          |Nome                         |Attributi         |Descrizione                            |
@@ -69,3 +69,9 @@
 |void          |addToVec   		     |string& number, string& weight, string& frequency   | Aggiunge i dati al vettore   |
 |string   |getNumberfromString   	     |string& line   	|Converte i dati letti da stringa a numero   |
 |string   |trimByDelim   		     |char& delim, string& line   |Esegue lo split della stringa di dati letta   |
+
+#### Media Artimetica
+#### Media Aritmetica Ponderata
+#### Media Armonica
+#### Media Geometrica
+#### Varianza
