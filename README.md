@@ -75,3 +75,13 @@ std::string trimByDelim(const char& delim, std::string& line);
 #### Media Armonica
 #### Media Geometrica
 #### Varianza
+
+## Authors
+
+* **Oleksandr Soludchyk** - [Tox1k](https://github.com/Tox1k)
+* **Riccardo Sangiorgio** - [Richard1984](https://github.com/Richard1984/)
+* **Giacomo Nanni**
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
