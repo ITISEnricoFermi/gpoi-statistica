@@ -6,6 +6,49 @@
 
 # Descrizione
 
+Il programma consente di calcolare media aritmetica, media aritmetica ponderata, media armonica, media geometrica e varianza relative ai dati inseriti in un file.
+
+1. Prima di eseguire il programma è necessario creare un file e popolarlo seguendo il seguente schema.
+
+```
+NUMBER : WEIGHT * FREQUENCY ,
+```
+**Esempio**
+
+```
+4:100*15,
+2:100*20,
+5:100*30
+```
+
+2. Il programma deve essere eseguito specificando come argomento la directory del file contenente i dati.
+
+```shell
+$ ./statistica $PROJECT_DIR/data.txt
+```
+
+3. È possibile scegliere quindi tra le varie opzioni presenti nel menù.
+
+```
+- MENU -
+1) STAMPA DATI
+2) CALCOLA MEDIA
+3) CALCOLA VARIANZA
+4) CALCOLA TUTTO
+5) RIEPILOGO
+6) ESCI
+```
+
+4. Nel caso in cui si selezioni la voce numero 2 *(CALCOLA MEDIA)*, sarà possibile scegliere tra le seguenti opzioni.
+```
+- CALCOLA MEDIA -
+1) MEDIA ARITMETICA
+2) MEDIA ARMONICA
+3) MEDIA ARITMETICA PONDERATA
+4) MEDIA GEOMETRICA
+5) INDIETRO
+```
+
 # Tabella delle variabili
 
 ## Classe Application
