@@ -6,15 +6,15 @@
 
 # Descrizione
 
-> Il programma consente di calcolare media aritmetica, media aritmetica ponderata, media armonica, media geometrica e varianza > relative ai dati inseriti in un file.
+> Il programma consente di calcolare media aritmetica, media aritmetica ponderata, media armonica, media geometrica e varianza relative ai dati inseriti in un file.
 
 1. Prima di eseguire il programma è necessario creare un file e popolarlo seguendo il seguente schema.
 
 ```
 NUMBER : WEIGHT * FREQUENCY ,
 ```
-###### Esempio
 
+###### Esempio
 ```
 4:100*15,
 2:100*20,
