@@ -49,7 +49,7 @@ $ ./statistica $PROJECT_DIR/data.txt
 5) INDIETRO
 ```
 
-# Tabella delle variabili
+# Struttura del programma
 
 ## Classe Application
 
@@ -122,7 +122,6 @@ void Application::mediaAritmetica() {
   long double s = 0;
   size_t k = vec.size();
   for (int i = 0; i < k; i++) {
-
     long double xi = vec.at(i).number;
     int ni = vec.at(i).frequency;
     s += (xi * ni) / n;
@@ -145,15 +144,14 @@ void Application::mediaAritmeticaPonderata() {
   size_t k = vec.size();
   long long int pesoTot = 0;
   long double numTot = 0;
+  
   for (int i = 0; i < k; i++) {
-
     int wi = vec.at(i).weight;
     int ni = vec.at(i).frequency;
     pesoTot += wi * ni;
   }
 
   for (int i = 0; i < k; i++) {
-
     long double xi = vec.at(i).number;
     int ni = vec.at(i).frequency;
     int wi = vec.at(i).weight;
@@ -175,8 +173,8 @@ void Application::mediaArmonica() {
 
   long double s = 0;
   size_t k = vec.size();
+  
   for (int i = 0; i < k; i++) {
-
     long double xi = vec.at(i).number;
     int ni = vec.at(i).frequency;
     s += ni / xi;
@@ -198,6 +196,7 @@ void Application::mediaGeometrica() {
 
   size_t k = vec.size();
   long double m = powl(vec.at(0).number, vec.at(0).frequency);
+  
   for (int i = 0; i < k - 1; i++) {
     long double xi = vec.at(i + 1).number;
     int ni = vec.at(i + 1).frequency;
@@ -221,11 +220,13 @@ void Application::varianza() {
 
   long double s2 = 0;
   size_t k = vec.size();
+  
   for (size_t i = 0; i < k; i++) {
     long double xi = vec.at(i).number;
     int ni = vec.at(i).frequency;
     s2 = ni * pow(xi - m_mediaAritmetica, 2);
   }
+  
   m_varianzaQ = s2 / k;
   m_varianza = sqrtl(m_varianzaQ);
 
